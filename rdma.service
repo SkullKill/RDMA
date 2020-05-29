@@ -1,0 +1,16 @@
+[Unit]
+Description=rtsa: rpi-dead-man-alarm
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/local/sbin
+ExecStart=/usr/bin/python3 -u /usr/local/sbin/rdma_py3.py >> /var/log/rdma/rdma.log 2>&1
+User=root
+Group=root
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
+
