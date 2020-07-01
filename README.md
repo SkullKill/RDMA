@@ -112,8 +112,13 @@ for the adafruit library, all instruction are there [adafruit_ht16k33](https://l
     sudo pip3 install adafruit-circuitpython-ht16k33
 
 please change POSOTIONS in
+
     vi /usr/local/lib/python3.5/dist-packages/adafruit_ht16k33/segments.py
+
+(in centos, it is at /usr/local/lib/python3.6/site-packages/adafruit_ht16k33/segments.py)
+
 to be like
+
     POSITIONS = (0, 2, 4, 6)  #  The positions of characters.
 
 
