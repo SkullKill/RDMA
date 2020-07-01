@@ -122,7 +122,7 @@ to be like
     POSITIONS = (0, 2, 4, 6)  #  The positions of characters.
 
 
-recommend using somehing like [log2ram](https://github.com/azlux/log2ram) to minimise read/write to sd card.
+and finally to install RDMA
 
     git clone https://github.com/skullkill/rdma
     cd rdma
@@ -134,7 +134,10 @@ customise the config as required, then
     systemctl start rdma
 
 restart snmpd daemon
+
     systemctl restart snmpd
+    
+recommend using somehing like [log2ram](https://github.com/azlux/log2ram) to minimise read/write to sd card.
 
 ## Upgrade
 
@@ -261,6 +264,10 @@ the LED is used as a "is working" status LED. will be up if the RDMA service is 
 You can now check log files
 
 tail -f /var/log/rdma/rdma.log
+
+in CentOS currently it is at 
+
+    tail -f /var/log/messages
 
 to get more logs, edit `vi /usr/local/sbin/rdma_py3.py`
 and uncomment the 2 print lines, so that they look like so
