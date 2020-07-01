@@ -6,13 +6,13 @@ systemctl -q is-active rdma  && { echo "ERROR: rdma service is still running. Pl
 # log2ram
 mkdir -p /usr/local/sbin/
 mkdir -p /var/log/rdma/
-install -m 644 rtsa.service /etc/systemd/system/rdma.service
-install -m 755 rtsa_py3.py /usr/local/sbin/rdma_py3.py
-install -m 644 rtsa.ini /etc/rdma.ini
+install -m 644 rdma.service /etc/systemd/system/rdma.service
+install -m 755 rdma_py3.py /usr/local/sbin/rdma_py3.py
+install -m 644 rdma.ini /etc/rdma.ini
 install -m 644 uninstall.sh /usr/local/sbin/uninstall-rdma.sh
 systemctl daemon-reload
-systemctl enable rtsa
-systemctl start rtsa
+systemctl enable rdma
+systemctl start rdma
 
 # cron
 #install -m 755 rtsa.hourly /etc/cron.hourly/rtsa
