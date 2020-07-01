@@ -66,8 +66,8 @@ def setup_OSsignal():
 # read config file
 def read_config():
 
-    #config.read('/etc/rdma.ini')
-    config.read('rdma.ini')
+    config.read('/etc/rdma.ini')
+    #config.read('rdma.ini')
 
     return
 
