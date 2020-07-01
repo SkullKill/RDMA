@@ -661,10 +661,12 @@ def process_motion():
     if (datetime.datetime.now() > (timer_state['lastreset'] + datetime.timedelta(seconds=timer_state['timer']))):
         # send sms
         #print("{} Alarm , no Motion detected {}".format(datetime.datetime.now(), timeover))
-        print("{} Alarm , no Motion detected {}".format(datetime.datetime.now(), timeleft))
+        # uncomment the next line, to display when timer has expired
+        #print("{} Alarm , no Motion detected {}".format(datetime.datetime.now(), timeleft))
         send_sms_noblock()
-    else:
-        print("{} Motion timeout within range {}".format(datetime.datetime.now(), timeleft))
+     # uncomment the 2 next line, to display when the timer is still ok
+    #else:
+        #print("{} Motion timeout within range {}".format(datetime.datetime.now(), timeleft))
 
     # Store it in the temp values folder
     file_name = config.get('system', 'temp_values_folder') + "rdma_timer"
