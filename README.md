@@ -287,7 +287,8 @@ and uncomment the 2 print lines, so that they look like so
 also, uncomment line 665, 668, 669
 
 ```
-
+    # under process_motion() function
+…
         # uncomment the next line, to display when timer has expired
         print("{} Alarm , no Motion detected {}".format(datetime.datetime.now(), timeleft))
         send_sms_noblock()
