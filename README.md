@@ -283,7 +283,19 @@ and uncomment the 2 print lines, so that they look like so
 …
 
 ```
-to minimise logs, remember to comment them back
+
+also, uncomment line 665, 668, 669
+
+```
+
+        # uncomment the next line, to display when timer has expired
+        print("{} Alarm , no Motion detected {}".format(datetime.datetime.now(), timeleft))
+        send_sms_noblock()
+     # uncomment the 2 next line, to display when the timer is still ok
+    else:
+        print("{} Motion timeout within range {}".format(datetime.datetime.now(), timeleft))
+```
+
 
 #### the temp sensors
 you can also do `cat /var/log/rdma/temp/TEMPsensorNAME`
