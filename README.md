@@ -95,6 +95,18 @@ _____
 
 **make sure that snmpd is installed and configured , install the adafruit HT16K33 library and modify one the library file before installing RDMA**
 
+if using CentOS, there are a few things to install before installing the adafruit library, i.e phthon3 pip, dev libraries and gcc.
+
+    yum install python3-pip python3-devel git git-core i2c-tools gcc net-snmp net-snmp-utils vim mlocate tcpdump bind-utils
+    
+on CentOS, to enable i2c, create/edit the file /boot/config.txt and add
+    
+    dtoverlay=w1-gpio
+    dtparam=i2c1=on
+    dtparam=i2c_arm=on
+    dtoverlay=i2c-rtc,ds3231
+
+
 for the adafruit library, all instruction are there [adafruit_ht16k33](https://learn.adafruit.com/matrix-7-segment-led-backpack-with-the-raspberry-pi/configuring-your-pi-for-i2c)
 
     sudo pip3 install adafruit-circuitpython-ht16k33
