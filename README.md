@@ -166,7 +166,7 @@ Even if not define in the config, the program has it's own default values, which
 - `delay_startup` : delay when running the program for the 1st time at boot. default is `10` sec (can be set to 10.2 etc)
 - `delay_cycle` : how long to wait after finishing a complete cycle to re run the cycle of updating the temperature/relay. e.g. if you are querying via snmp every 1 min, it is pointless to keep updating the temperature values. default is `5.0` sec
 - `timer_normal` : How long to wait without movement before triggering the alarm. default is `300` seconds. (5 min)
-- `timer_extended` : How long to wait without movement before triggering the alarm (extended mode). default is `900` seconds. (15 min)
+- `timer_extended` : How long to wait without movement before triggering the alarm (extended mode). default is `900` seconds. (15 min) (note, timer reset at end of extended mode, effectively, it is extented timer + normal timer. reduce extended timer accordingly)
 - `httpd_address` : local address to listen to. if set to `localhost` (default), web interface will only we accessible locally, if set to `0.0.0.0`, it will be accessible from anywhere, from any interface.
 - `httpd_port` : tcp port to listen on for the web interface. default is `80`
 
@@ -179,6 +179,8 @@ NOTE: if accessible from public places, recomend changing this to something like
 - `username` : username of your clicksend account
 - `api` : API key of your clicksend account
 - `message` : message sent via sms e.g `DeadMan Alarm timerout at SOMEPLACE`
+- `proxyenable` : if `0 or False`, it is disabled. if `1 or True`, it is enabled. default is 1
+- `proxy` : http proxy url.
 
 
 #### [1X] : SMS recipient
