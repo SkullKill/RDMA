@@ -155,7 +155,8 @@ def enable_motionExtendedMode():
 
 def disable_motionExtendedMode():
     print("{} Disable EntendedMode".format(datetime.datetime.now()))
-    #timer_state['lastreset'] = datetime.datetime.now()
+    # reset timer before disabling extended mode
+    timer_state['lastreset'] = datetime.datetime.now()
     timer_state['timer'] = timer_state['normal']
     timer_state['extended_mode'] = False
     return
@@ -206,7 +207,12 @@ def send_sms():
         first_run = True
         beep_noblock(config.getfloat('202', 'sms_length'), config.getint('202', 'sms_times'))
         #url = 'curl --include --header "Authorization: Basic {}" --request POST --header "Content-Type: application/json" --data-binary "    {{ \\"messages\\":['.format(config.get('clicksend', 'api'))
-        url = 'curl --user {}:{} --include --request POST --header "Content-Type: application/json" --data-binary "    {{ \\"messages\\":['.format(config.get('clicksend', 'username'), config.get('clicksend', 'api'))
+        if (config.getboolean('clicksend', 'proxyenable', fallback=0)):
+            url = 'curl -x {}'.format(config.get('clicksend', 'proxy'))
+        else:
+            url = 'curl'
+
+        url = url + (' --user {}:{} --include --request POST --header "Content-Type: application/json" --data-binary "    {{ \\"messages\\":['.format(config.get('clicksend', 'username'), config.get('clicksend', 'api')))
         for sms_id in sms_list:
             if (config.getboolean(sms_id, 'enable', fallback=1)):
                 if not (first_run):
